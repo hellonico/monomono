@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<requestClearing fpmlVersion="5-3" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.fpml.org/FpML-5/confirmation">
+  <header>
+    <messageId messageIdScheme="http://member1/message-id">trd-m041-1</messageId>
+    <sentBy>88803</sentBy>
+    <creationTimestamp>2015-03-18T01:03:26.783Z</creationTimestamp>
+    <partyMessageInformation>
+      <partyReference href="partyA"/>
+    </partyMessageInformation>
+  </header>
+  <isCorrection>false</isCorrection>
+  <correlationId correlationIdScheme="http://member1/correlation-id">trd-c041</correlationId>
+  <sequenceNumber>1</sequenceNumber>
+  <portfolioReference>
+    <portfolioName>88803IRSHUPL</portfolioName>
+    <sequenceNumber>1</sequenceNumber>
+    <submissionsComplete>true</submissionsComplete>
+  </portfolioReference>
+  <originatingEvent>HeadroomCheck</originatingEvent>
+  <trade>
+    <tradeHeader>
+      <partyTradeIdentifier>
+        <partyReference href="tradeSource"/>
+        <tradeId tradeIdScheme="http://www.trade-source.tst/trade-id">trd-041-1</tradeId>
+      </partyTradeIdentifier>
+      <partyTradeIdentifier>
+        <partyReference href="partyA"/>
+        <tradeId tradeIdScheme="http://www.partyA.tst/trade-id">trd-041-1A</tradeId>
+      </partyTradeIdentifier>
+      <partyTradeIdentifier>
+        <partyReference href="partyB"/>
+        <tradeId tradeIdScheme="http://www.partyB.tst/trade-id">trd-041-1B</tradeId>
+      </partyTradeIdentifier>
+      <tradeDate>2016-10-21</tradeDate>
+    </tradeHeader>
+        <swap>
+      <swapStream id="floatingLeg">
+        <payerPartyReference href="partyA"/>
+        <receiverPartyReference href="partyB"/>
+        <calculationPeriodDates id="floatingCalcPeriodDates">
+          <effectiveDate>
+            <unadjustedDate>2016-10-25</unadjustedDate>
+            <dateAdjustments>
+              <businessDayConvention>NONE</businessDayConvention>
+            </dateAdjustments>
+          </effectiveDate>
+          <terminationDate>
+            <unadjustedDate>2022-07-25</unadjustedDate>
+            <dateAdjustments>
+              <businessDayConvention>MODFOLLOWING</businessDayConvention>
+              <businessCenters>
+                <businessCenter>JPTO</businessCenter>
+              </businessCenters>
+            </dateAdjustments>
+          </terminationDate>
+          <calculationPeriodDatesAdjustments>
+            <businessDayConvention>MODFOLLOWING</businessDayConvention>
+            <businessCenters>
+              <businessCenter>JPTO</businessCenter>
+            </businessCenters>
+          </calculationPeriodDatesAdjustments>
+          <lastRegularPeriodEndDate>2021-10-25</lastRegularPeriodEndDate>
+          <stubPeriodType>LongFinal</stubPeriodType>
+          <calculationPeriodFrequency>
+            <periodMultiplier>6</periodMultiplier>
+            <period>M</period>
+            <rollConvention>25</rollConvention>
+          </calculationPeriodFrequency>
+        </calculationPeriodDates>
+        <paymentDates id="floatingLegPaymentDates">
+          <calculationPeriodDatesReference href="floatingCalcPeriodDates"/>
+          <paymentFrequency>
+            <periodMultiplier>6</periodMultiplier>
+            <period>M</period>
+          </paymentFrequency>
+          <lastRegularPaymentDate>2021-10-25</lastRegularPaymentDate>
+          <payRelativeTo>CalculationPeriodEndDate</payRelativeTo>
+          <paymentDatesAdjustments>
+            <businessDayConvention>MODFOLLOWING</businessDayConvention>
+            <businessCenters>
+              <businessCenter>JPTO</businessCenter>
+            </businessCenters>
+          </paymentDatesAdjustments>
+        </paymentDates>
+        <resetDates id="floatingLegResetDates">
+          <calculationPeriodDatesReference href="floatingCalcPeriodDates"/>
+          <resetRelativeTo>CalculationPeriodStartDate</resetRelativeTo>
+          <fixingDates>
+            <periodMultiplier>-2</periodMultiplier>
+            <period>D</period>
+            <dayType>Business</dayType>
+            <businessDayConvention>NONE</businessDayConvention>
+            <businessCenters>
+              <businessCenter>GBLO</businessCenter>
+            </businessCenters>
+            <dateRelativeTo href="floatingLegResetDates"/>
+          </fixingDates>
+          <resetFrequency>
+            <periodMultiplier>6</periodMultiplier>
+            <period>M</period>
+          </resetFrequency>
+          <resetDatesAdjustments>
+            <businessDayConvention>MODFOLLOWING</businessDayConvention>
+            <businessCenters>
+              <businessCenter>JPTO</businessCenter>
+            </businessCenters>
+          </resetDatesAdjustments>
+        </resetDates>
+        <calculationPeriodAmount>
+          <calculation>
+            <notionalSchedule>
+              <notionalStepSchedule>
+                <initialValue>{{initialValue}}</initialValue>
+                <currency>{{currency1}}</currency>
+              </notionalStepSchedule>
+            </notionalSchedule>
+            <floatingRateCalculation>
+              <floatingRateIndex>{{currency1}}-LIBOR-BBA</floatingRateIndex>
+              <indexTenor>
+                <periodMultiplier>6</periodMultiplier>
+                <period>M</period>
+              </indexTenor>
+              <spreadSchedule>
+                <initialValue>0.0</initialValue>
+              </spreadSchedule>
+            </floatingRateCalculation>
+            <dayCountFraction>ACT/360</dayCountFraction>
+          </calculation>
+        </calculationPeriodAmount>
+        <stubCalculationPeriodAmount>
+          <calculationPeriodDatesReference href="floatingCalcPeriodDates"/>
+          <finalStub>
+            <floatingRate>
+              <floatingRateIndex>{{currency1}}-LIBOR-BBA</floatingRateIndex>
+              <indexTenor>
+                <periodMultiplier>6</periodMultiplier>
+                <period>M</period>
+              </indexTenor>
+            </floatingRate>
+            <floatingRate>
+              <floatingRateIndex>{{currency1}}-LIBOR-BBA</floatingRateIndex>
+              <indexTenor>
+                <periodMultiplier>1</periodMultiplier>
+                <period>Y</period>
+              </indexTenor>
+            </floatingRate>
+          </finalStub>
+        </stubCalculationPeriodAmount>
+      </swapStream>
+      <swapStream id="fixedLeg">
+        <payerPartyReference href="partyB"/>
+        <receiverPartyReference href="partyA"/>
+        <calculationPeriodDates id="fixedCalcPeriodDates">
+          <effectiveDate>
+            <unadjustedDate>2016-10-25</unadjustedDate>
+            <dateAdjustments>
+              <businessDayConvention>NONE</businessDayConvention>
+            </dateAdjustments>
+          </effectiveDate>
+          <terminationDate>
+            <unadjustedDate>2022-07-25</unadjustedDate>
+            <dateAdjustments>
+              <businessDayConvention>MODFOLLOWING</businessDayConvention>
+              <businessCenters>
+                <businessCenter>JPTO</businessCenter>
+              </businessCenters>
+            </dateAdjustments>
+          </terminationDate>
+          <calculationPeriodDatesAdjustments>
+            <businessDayConvention>MODFOLLOWING</businessDayConvention>
+            <businessCenters>
+              <businessCenter>JPTO</businessCenter>
+            </businessCenters>
+          </calculationPeriodDatesAdjustments>
+          <lastRegularPeriodEndDate>2021-10-25</lastRegularPeriodEndDate>
+          <stubPeriodType>LongFinal</stubPeriodType>
+          <calculationPeriodFrequency>
+            <periodMultiplier>6</periodMultiplier>
+            <period>M</period>
+            <rollConvention>25</rollConvention>
+          </calculationPeriodFrequency>
+        </calculationPeriodDates>
+        <paymentDates id="fixedLegPaymentDates">
+          <calculationPeriodDatesReference href="fixedCalcPeriodDates"/>
+          <paymentFrequency>
+            <periodMultiplier>6</periodMultiplier>
+            <period>M</period>
+          </paymentFrequency>
+          <lastRegularPaymentDate>2021-10-25</lastRegularPaymentDate>
+          <payRelativeTo>CalculationPeriodEndDate</payRelativeTo>
+          <paymentDatesAdjustments>
+            <businessDayConvention>MODFOLLOWING</businessDayConvention>
+            <businessCenters>
+              <businessCenter>JPTO</businessCenter>
+            </businessCenters>
+          </paymentDatesAdjustments>
+        </paymentDates>
+        <calculationPeriodAmount>
+          <calculation>
+            <notionalSchedule>
+              <notionalStepSchedule>
+                <initialValue>{{initialValue}}</initialValue>
+                <currency>{{currency1}}</currency>
+              </notionalStepSchedule>
+            </notionalSchedule>
+            <fixedRateSchedule>
+              <initialValue>0.0030</initialValue>
+            </fixedRateSchedule>
+            <dayCountFraction>ACT/365.FIXED</dayCountFraction>
+          </calculation>
+        </calculationPeriodAmount>
+      </swapStream>
+        </swap>
+  </trade>
+  <party id="partyA">
+    <partyId>TEST-PARTYA</partyId>
+  </party>
+  <party id="partyB">
+    <partyId>TEST-PARTYB</partyId>
+  </party>
+  <party id="tradeSource">
+    <partyId>TEST-JCLEAR</partyId>
+  </party>
+</requestClearing>
