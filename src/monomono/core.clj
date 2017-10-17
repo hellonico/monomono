@@ -57,11 +57,12 @@
     output-folder (options :output)
     is-pool? (options :pool)
     is-clean? (options :clean)
+    rsc (or (options :resources) (str (.getAbsolutePath (java.io.File. ".")) "/" "resources" ))
     gen-fn (if is-pool? generate-with-pool generate)
   ]
   (if is-clean? (clean-output output-folder))
   (sl/cache-on!)
-  (sl/set-resource-path! (options :resources))
+  (sl/set-resource-path! rsc)
   (clojure.java.io/make-parents (str output-folder "/" "run.tmp"))
 
   (if (vector? (first target))
@@ -94,3 +95,9 @@
   (do
   (run (parse-opts args cli-options))
   (System/exit 0))))
+
+(comment
+
+  (def a {:a 2})
+  (or (a :b) 3)
+  )
