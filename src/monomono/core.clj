@@ -40,7 +40,7 @@
 (def cli-options
   [["-p" "--pool" "Generate Using Pool" :default false :parse-fn #(Boolean/valueOf %) ]
    ["-c" "--clean" "Clean Output Folder First" :default false :parse-fn #(Boolean/valueOf %)]
-   ["-r" "--resources FILE" "resources folder for templates" :default "resources" ]
+   ["-r" "--resources FILE" "resources folder for templates" :default (str (.getAbsolutePath (java.io.File. ".")) "/" "resources" ) ]
    ["-g" "--generator FILE" "gen file" :required true :validate [#(not (nil? %)) "Gen file not valid"]]
    ["-t" "--time" "Display time to generate files" :default false :parse-fn #(Boolean/valueOf %)]
    ["-o" "--output FILE" "output folder" :default "gen" ]])
@@ -57,7 +57,7 @@
     output-folder (options :output)
     is-pool? (options :pool)
     is-clean? (options :clean)
-    rsc (or (options :resources) (str (.getAbsolutePath (java.io.File. ".")) "/" "resources" ))
+    rsc (options :resources)
     gen-fn (if is-pool? generate-with-pool generate)
   ]
   (if is-clean? (clean-output output-folder))
