@@ -9,13 +9,17 @@
      :currency2 (rand-nth (constants :currencies))
      :initialValue (rand-nth (constants :notionals))})
 
+(def mycount_ (atom 0))
 (defn naming-fn [output-folder mappings]
+
   (str
     output-folder
     "/xs_swap_"
+    (swap! mycount_ inc)
+    "_"
     (mappings :currency1) "_"
     (mappings :currency2) "_"
     (mappings :initialValue) "_"
-    (c/to-long (l/local-now)) ".xml"))
+    ".xml"))
 
 [50000 "xs_swap.xml" naming-fn mapping-fn]

@@ -6,5 +6,6 @@
     :initialValue (rand-nth (constants :notionals))})
 
 [
+[1000 "xs_swap.xml" naming-fn mapping-fn-2]
 [5000 "xs_swap.xml" naming-fn mapping-fn-2]
 ]
